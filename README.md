@@ -11,7 +11,9 @@ Before you start working with this project, it is essential to have the followin
 - [Minikube (for local Kubernetes deployment)](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download)
 - [Git](https://git-scm.com/downloads)
 
-## Step 1: Set Up the Project Directory
+## Working with Docker
+
+### Step 1: Set Up the Project Directory
 
 Create following directory and subfolders in Docker:
 
@@ -29,7 +31,7 @@ Directory structure example:
         └── application/ # Dockerfile for the application
 ```
 
-## Step 2: Create a Simple Application
+### Step 2: Create a Simple Application
 
 Inside the `quickstart_docker/application` directory, create a Python web server, which will be example of our simple application. 
 
@@ -51,7 +53,7 @@ httpd.serve_forever()
 
 The application requires a runtime environment, which means Python is needed, along with an operating system and specific dependencies. To save time, a pre-built image from Docker Hub will be used instead of building everything from scratch.
 
-## Step 3: Create a Dockerfile
+### Step 3: Create a Dockerfile
 
 Next, package the application into a Docker image. To do this, create a Dockerfile inside `quickstart_docker/docker/application`:
 
@@ -78,7 +80,7 @@ EXPOSE 8000
 CMD ["python", "/app/application.py"]
 ```
 
-## Step 4: Build the Docker Image
+### Step 4: Build the Docker Image
 
 When application and Dockerfile ready, it's time to build the Docker image. Run the following command from the `quickstart_docker` directory:
 
@@ -92,7 +94,7 @@ Arguments:
 -   `-f docker/application/Dockerfile` points to the Dockerfile location.
 -   `-t exampleapp` tags the image as `exampleapp`.
 
-## Step 5: Verify the Docker Image
+### Step 5: Verify the Docker Image
 
 Once the build process is complete, Docker image needed to be verified:
 
@@ -110,7 +112,7 @@ python                 3.6             05stv8636w3f        6 weeks ago         1
 ```
 More information about docker images you can find [here](https://docs.docker.com/engine/reference/builder/.).
 
-## Step 6: Push Image to a Repository
+### Step 6: Push Image to a Repository
 
 After verifying that the image is created, push it to a container repository (like Docker Hub or your private repository) so it can be deployed in Kubernetes. 
 
