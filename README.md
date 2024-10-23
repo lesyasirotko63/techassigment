@@ -11,6 +11,8 @@ Before you start working with this project, it is essential to have the followin
 - [Minikube (for local Kubernetes deployment)](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download)
 - [Git](https://git-scm.com/downloads)
 
+If Kubernetes and Minikube are not configured, you can find [instructions on how to configure them below](#setting-up-kubernetes).
+
 ## Working with Docker
 
 ### Step 1: Set Up the Project Directory
@@ -51,17 +53,17 @@ httpd.serve_forever()
 
 ```
 
-The application requires a runtime environment, which means Python is needed, along with an operating system and specific dependencies. To save time, a pre-built image from Docker Hub will be used instead of building everything from scratch.
+The application requires a runtime environment, which means Python is needed, along with an operating system and specific dependencies. To save time, a pre-built image from the Docker Hub will be used instead of building everything from scratch.
 
-### Step 3: Create a Dockerfile
+### Step 3: Create Dockerfile
 
-Next, package the application into a Docker image. To do this, create a Dockerfile inside `quickstart_docker/docker/application`:
+Next, package the application into Docker image. To do this, create Dockerfile inside `quickstart_docker/docker/application`:
 
 ```bash
 touch quickstart_docker/docker/application/Dockerfile
 ```
 
-Open the `Dockerfile` and add the following content:
+Open `Dockerfile` and add the following content:
 
 ```docker
 # Use base image from the registry
@@ -82,7 +84,7 @@ CMD ["python", "/app/application.py"]
 
 ### Step 4: Build the Docker Image
 
-When application and Dockerfile ready, it's time to build the Docker image. Run the following command from the `quickstart_docker` directory:
+When application and the Dockerfile ready, it's time to build the Docker image. Run the following command from the `quickstart_docker` directory:
 
 ```bash
 docker build . -f docker/application/Dockerfile -t exampleapp
@@ -91,10 +93,10 @@ docker build . -f docker/application/Dockerfile -t exampleapp
 Arguments:
 
 -   `.` specifies the build context (the current directory).
--   `-f docker/application/Dockerfile` points to the Dockerfile location.
+-   `-f docker/application/Dockerfile` points to Dockerfile location.
 -   `-t exampleapp` tags the image as `exampleapp`.
 
-### Step 5: Verify the Docker Image
+### Step 5: Verify Docker Image
 
 Once the build process is complete, Docker image needed to be verified:
 
@@ -133,11 +135,11 @@ Here’s how to push it to Docker Hub:
 Image is ready to be deployed using Kubernetes.
 
 
-## Setting Up Kubernetes
+## Setting Up Kubernetes 
 
 To run your Dockerized application on Kubernetes, you first need a Kubernetes cluster. You can use [Minikube](https://minikube.sigs.k8s.io/docs/start/) for local development, or deploy it on a cloud provider like Google Kubernetes Engine (GKE), AWS Elastic Kubernetes Service (EKS), or Azure Kubernetes Service (AKS).
 
-### 1. **Start Minikube**
+### **Start Minikube**
 
 If you are using Minikube for local Kubernetes development, you can start it with the following command:
 
